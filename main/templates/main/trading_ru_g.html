@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+
+<style>
+
+ .mt-4 a:hover {
+   color: white;
+   background-color: #ED1C24!important;
+   text-decoration: none;
+ }
+
+  .mt-4 a {
+     border: 2px solid #ED1C24;
+     text-decoration: none;
+     padding: 10px;
+     border-radius: 10px;
+     text-align: center;
+     width: 25%;
+     color: #21409A;
+     background-color: white;"
+  }
+
+
+
+</style>
+
+
+
+<img style="text-align: center" src="http://abtco.us/wp-content/uploads/st-ru2.jpg">
+
+<div class="mt-4 mb-4" style="text-align: center;">
+<a class="btn-hoover col-12 col-sm-12 col-md-4" href="{% url 'register' %}">Записаться на курс!</a>
+</div>
+
+
+{% endblock %}

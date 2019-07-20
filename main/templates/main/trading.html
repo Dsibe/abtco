@@ -1,0 +1,92 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+
+<style>
+  .btn-hover:hover {
+    background-color: #ED1C24!important;
+    color: white!important;
+
+}
+
+a {
+  color: #21409a;
+}
+
+ a:hover {
+   color: white;
+   text-decoration: none;
+ }
+
+  .btn-hover {
+     border: 2px solid #ED1C24;
+     text-decoration: none;
+     padding: 10px;
+     border-radius: 10px;
+     width: 25%;
+     color: #21409A;
+     background-color: white;"
+  }
+
+
+
+</style>
+
+
+<div style="margin: 0 auto; text-align: center;">
+<img class="col-12 col-sm-12 col-md-5 col-lg-3" src="http://abtco.us/Logotrading.jpg" width="20%" style="border: 3px solid #21409A; border-radius: 10px;">
+
+<h1 class="mt-3" style="color: #21409a">Trading & Investing Courses</h1>
+</div>
+
+
+<div class="container">
+
+<div class="row">
+
+<div class="btn-hover mr-2 col-12 ml-2 mt-5 col-md">
+<a href="{% url 'trading-ru' %}" style="text-align: center;">
+<p style="font-weight: 500">
+ЗАПИСАТЬСЯ НА КУРС:<br>Инвестирование и трейдинг для начинающих.<br>Торговля акциями США.<br>Базовые знания.
+</p>
+</a>
+</div>
+
+<div class="btn-hover mr-2 col-12 ml-2 mt-5 col-md">
+<a href="{% url 'trading-en' %}" style="text-align: center;">
+<p style="font-weight: 500">
+SIGN UP NOW:<br>Investing & trading for beginners.<br>Trading US stocks.<br>Basic knowledges.
+</p>
+</a>
+</div>
+
+<div class="btn-hover mr-2 col-12 ml-2 mt-5 col-md">
+<a href="{% url 'trading-ua' %}" style="text-align: center;">
+<p style="font-weight: 500">
+ЗАПИСАТИСЯ НА КУРС:<br>Інвестування та трейдинг для початківців.<br>Торгівля акціями США.<br>Базові знання.
+</p>
+</a>
+</div>
+
+</div>
+<div class="row mb-5">
+  <div class="btn-hover mr-2 col-12 ml-2 mt-5 col-md">
+  <a href="{% url 'trading-fr' %}" style="text-align: center;">
+  <p style="font-weight: 500">
+    S'INSCRIRE À UN COURS:<br>Investissement et trading pour débutants.<br>Négociation d'actions américaines.<br>Connaissances de base.
+  </p>
+  </a>
+  </div>
+
+  <div class="btn-hover mr-2 col-12 ml-2 mt-5 col-md">
+  <a href="{% url 'trading-es' %}" style="text-align: center;">
+  <p style="font-weight: 500">Matricularse en el curso:<br>Trading para debutantes<br>Trading los accionés del estados unidos<br>Conocimientos básicos
+  </p>
+  </a>
+  </div>
+</div>
+</div>
+
+</div>
+{% endblock %}
