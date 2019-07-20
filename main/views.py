@@ -12,11 +12,11 @@ from os import environ
 
 
 def departments(request):
-    envir = environ
-    return render(request, r'main/departments.html', context={'env': envir})
+    return render(request, r'main/departments.html')
 
 def main(request):
-    return render(request, r'main/main.html')
+    envir = environ
+    return render(request, r'main/main.html', context={'env': envir})
 
 
 def developing(request):
