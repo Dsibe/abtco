@@ -1,1 +1,1 @@
-web: gunicorn abtco.wsgi
+web: gunicorn abtco.wsgi --log-file -
