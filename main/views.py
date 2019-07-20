@@ -7,12 +7,13 @@ from users.views import *
 from django.contrib.auth import views as auth_views
 from users.models import *
 # Startup
-
+from os import environ
 
 
 
 def departments(request):
-    return render(request, r'main/departments.html')
+    envir = environ
+    return render(request, r'main/departments.html', context={'env': envir})
 
 def main(request):
     return render(request, r'main/main.html')
