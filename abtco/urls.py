@@ -24,19 +24,19 @@ import datetime
 #                 # print(user.unlocked, user)
 #                 user.save()
 #                 # print('Paid')
-
-
-for user in Profile.objects.all():
-    day = datetime.datetime.today().weekday()
-    if day == 0 or day == 3:
-        add_unlocked(user)
+# 
+#
+# for user in Profile.objects.all():
+#     day = datetime.datetime.today().weekday()
+#     if day == 0 or day == 3:
+#         add_unlocked(user)
 
 
 # print('URLS')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # 
+    #
     # path('paypal/', include('paypal.standard.ipn.urls')),
     # path('process-payment/<str:course>/', process_payment, name='process_payment'),
     # path('payment-done/', payment_done, name='payment_done'),
