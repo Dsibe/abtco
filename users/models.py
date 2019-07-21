@@ -22,9 +22,9 @@ def gen_slug():
     return slugify(str(randint(1, 1000000000000000)) + str(uuid4()) + str(datetime.datetime.now()))
 
 class Post(models.Model):
-    title = models.CharField(max_length=164, db_index=True, null=True)
+    title = models.CharField(max_length=164, null=True)
     slug = models.SlugField(max_length=400, unique=True, null=True, blank=True, default=gen_slug())
-    body = models.TextField(max_length=100000, db_index=True)
+    body = models.TextField(max_length=100000)
 
     def __str__(self):
         return self.title
