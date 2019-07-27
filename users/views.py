@@ -175,7 +175,7 @@ def profile(request):
         user_profile = Profile.objects.get(user=user)
 
         posts = Post.objects.filter(id=122112291888818218)
-
+        print(user_profile.unlocked)
         for i in range(1, int(user_profile.unlocked) + 1):
             posts |= Post.objects.filter(title=i)
             print(posts)

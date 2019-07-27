@@ -8,35 +8,14 @@ from django.contrib.auth import views as auth_views
 from users.models import *
 # Startup
 
-# Должно быть типа request.user
-def add_unlocked(user):
-    if int(user.unlocked) < 15:
-        if int(user.unlocked) <= 2:
-            unlocked = int(user.unlocked) + 1
-            user.unlocked = unlocked
-            print(user.unlocked, user)
-            user.save()
-            # print('Free')
-        elif int(user.unlocked) >= 3:
-            if user.ppaid == True:
-                unlocked = int(user.unlocked) + 1
-                user.unlocked = unlocked
-                # print(user.unlocked, user)
-                user.save()
-                # print('Paid')
 
-
-for user in Profile.objects.all():
-    day = datetime.datetime.today().weekday()
-    if day == 0 or day == 3:
-        add_unlocked(user)
 
 
 # print('URLS')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
+    path('underconstruction/', ud, name='ud'),
     path('paypal/', include('paypal.standard.ipn.urls')),
     path('process-payment/<str:course>/', process_payment, name='process_payment'),
     path('payment-done/', payment_done, name='payment_done'),
