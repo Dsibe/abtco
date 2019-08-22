@@ -16,6 +16,7 @@ from users.models import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('underconstruction/', ud, name='ud'),
+    path('business/', business, name='business'),
     path('paypal/', include('paypal.standard.ipn.urls')),
     path('process-payment/<str:course>/', process_payment, name='process_payment'),
     path('payment-done/', payment_done, name='payment_done'),

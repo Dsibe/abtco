@@ -116,10 +116,11 @@ LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'loginn'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'mail.abtco.us'
-EMAIL_PORT = 25
-EMAIL_HOST_USER = 'school@abtco.us'
-EMAIL_HOST_PASSWORD = os.environ.get('DJANGO_EMAIL_HOST_PASSWORD', '')
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'abtcous2014@gmail.com'
+EMAIL_HOST_PASSWORD = 'ABTco777&&&'
+# EMAIL_HOST_PASSWORD = os.environ.get('DJANGO_EMAIL_HOST_PASSWORD', '')
 EMAIL_USE_TLS = True
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

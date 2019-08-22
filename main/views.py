@@ -185,9 +185,12 @@ def trading_ru_g(request):
 
 После оплаты вы получите доступ к полному курсу по расписанию,
 согласно выбранной вами группы.
-Стоимость полного курса составляет — 49.95$
+Стоимость полного курса составляет — 9.99$
 """
     return render(request, r'main/trading_ru_g.html', context={'body': body})
 
 def trading_ua_g(request):
     return render(request, r'main/trading_ua_g.html')
+
+def business(request):
+    return render(request, 'main/business.html')

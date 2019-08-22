@@ -32,7 +32,7 @@ def process_payment(request, course):
 
     paypal_dict = {
         "business": settings.PAYPAL_RECEIVER_EMAIL,
-        "amount": "49.95",
+        "amount": "9.99",
         "item_name": course,
         "invoice": randint(1, 10000000),
         "currency_code": "USD",
@@ -78,17 +78,16 @@ def show_me_the_money(sender, **kwargs):
 
         email = user.email
 
-        # print(f"email: {email}, user: {user}, profile: {profile}, paid: {profile.ppaid}")
         send_mail(
             "You have succesfully bought course / Успешная оплата",
             "You have succesfully bought course Trading for beginners basic knowledges. You will receive 4th lesson on Thursday. It will appear in you profile. | Вы успешно оплатили курс Торговля для начинающих, Базовые знания. Вы получите 4тый урок в Четверг. Он автоматический появиться в вашем личном кабинете.",
-            "school@abtco.us",
+            "abtcous2014@gmail.com",
             [email],
         )
         send_mail(
             "You have succesfully bought course / Успешная оплата",
             "You have succesfully bought course Trading for beginners basic knowledges. You will receive 4th lesson on Thursday. It will appear in you profile. | Вы успешно оплатили курс Торговля для начинающих, Базовые знания. Вы получите 4тый урок в Четверг. Он автоматический появиться в вашем личном кабинете.",
-            "school@abtco.us",
+            "abtcous2014@gmail.com",
             ["darik.pc@gmail.com", "abt.company@aol.com"],
             fail_silently=False,
         )
