@@ -1,17 +1,11 @@
 from django.contrib import admin
 from django.urls import path, include
 import datetime
-
 from main.views import *
 from users.views import *
 from django.contrib.auth import views as auth_views
 from users.models import *
-# Startup
 
-
-
-
-# print('URLS')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
