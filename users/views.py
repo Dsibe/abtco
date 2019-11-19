@@ -12,7 +12,6 @@ from paypal.standard.ipn.signals import valid_ipn_received, invalid_ipn_received
 
 from django.core.mail import send_mail
 
-
 from django.conf import settings
 from decimal import Decimal
 from paypal.standard.forms import PayPalPaymentsForm
@@ -38,12 +37,15 @@ def process_payment(request, course):
         "currency_code": "USD",
         "notify_url": "http://{}{}".format(host, reverse("paypal-ipn")),
         "return_url": "http://{}{}".format(host, reverse("payment_done")),
-        "cancel_return": "http://{}{}".format(host, reverse("payment_cancelled")),
+        "cancel_return": "http://{}{}".format(host,
+                                              reverse("payment_cancelled")),
         "custom": profile,
     }
 
     form = PayPalPaymentsForm(initial=paypal_dict)
-    return render(request, "users/process_payment.html", context={"form": form})
+    return render(request,
+                  "users/process_payment.html",
+                  context={"form": form})
 
 
 @csrf_exempt
@@ -150,15 +152,24 @@ def post_detail(request, slug):
         host = request.get_host()
 
         paypal_dict = {
-            "business": settings.PAYPAL_RECEIVER_EMAIL,
-            "amount": "49.95",
-            "item_name": "rug",
-            "invoice": randint(1, 10000000),
-            "currency_code": "USD",
-            "notify_url": "http://{}{}".format(host, reverse("paypal-ipn")),
-            "return_url": "http://{}{}".format(host, reverse("payment_done")),
-            "cancel_return": "http://{}{}".format(host, reverse("payment_cancelled")),
-            "custom": profile,
+            "business":
+            settings.PAYPAL_RECEIVER_EMAIL,
+            "amount":
+            "49.95",
+            "item_name":
+            "rug",
+            "invoice":
+            randint(1, 10000000),
+            "currency_code":
+            "USD",
+            "notify_url":
+            "http://{}{}".format(host, reverse("paypal-ipn")),
+            "return_url":
+            "http://{}{}".format(host, reverse("payment_done")),
+            "cancel_return":
+            "http://{}{}".format(host, reverse("payment_cancelled")),
+            "custom":
+            profile,
         }
 
         form = PayPalPaymentsForm(initial=paypal_dict)

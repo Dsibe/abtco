@@ -5,6 +5,7 @@ from django.core.files.base import ContentFile
 
 from django import forms
 
+
 class ContactUsForm(forms.Form):
 
     email = forms.EmailField()
@@ -12,7 +13,19 @@ class ContactUsForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea)
 
     widgets = {
-        'email': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Your email"}),
-        'name': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Your name"}),
-        'message': forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Your message"}),
+        'email':
+        forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': "Your email"
+        }),
+        'name':
+        forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': "Your name"
+        }),
+        'message':
+        forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': "Your message"
+        }),
     }

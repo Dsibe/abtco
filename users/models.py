@@ -7,9 +7,13 @@ from django.shortcuts import reverse
 import datetime
 from django.contrib.auth.decorators import login_required
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    unlocked = models.CharField(max_length=15, blank=True, null=True, default=1)
+    unlocked = models.CharField(max_length=15,
+                                blank=True,
+                                null=True,
+                                default=1)
     ppaid = models.BooleanField(default=False)
 
     def __str__(self):
@@ -18,12 +22,20 @@ class Profile(models.Model):
     def save(self, *args, **kwargs):
         super(Profile, self).save(*args, **kwargs)
 
+
 def gen_slug():
-    return slugify(str(randint(1, 1000000000000000)) + str(uuid4()) + str(datetime.datetime.now()))
+    return slugify(
+        str(randint(1, 1000000000000000)) + str(uuid4()) +
+        str(datetime.datetime.now()))
+
 
 class Post(models.Model):
     title = models.CharField(max_length=164, null=True)
-    slug = models.SlugField(max_length=400, unique=True, null=True, blank=True, default=gen_slug())
+    slug = models.SlugField(max_length=400,
+                            unique=True,
+                            null=True,
+                            blank=True,
+                            default=gen_slug())
     body = models.TextField(max_length=100000)
 
     def __str__(self):
