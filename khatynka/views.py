@@ -1,4 +1,4 @@
-from django.shortcuts import render, HTTPResponse
+from django.shortcuts import render
 
 def main(request):
-    return HTTPResponse('Main')
+    return render(request, 'khatynka/main.html')

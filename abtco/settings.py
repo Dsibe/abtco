@@ -55,7 +55,7 @@ ROOT_URLCONF = 'abtco.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'TEMPLATES'), os.path.join(BASE_DIR, 'khatynka/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -142,7 +142,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 ROOT_HOSTCONF = 'main.hosts'
-DEFAULT_HOST = 'www'
+DEFAULT_HOST = 'khatynka'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
