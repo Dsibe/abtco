@@ -14,7 +14,13 @@ SECRET_KEY = os.environ.get(
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    '.abtco.us', 'localhost', '127.0.0.1', 'abtcoproject.herokuapp.com'
+    'www.abtco.us',
+    'khatynka.abtco.us',
+    'abtco.us',
+    'www.khatynka.abtco.us',
+    'localhost',
+    '127.0.0.1',
+    'abtcoproject.herokuapp.com',
 ]
 
 INSTALLED_APPS = [
@@ -136,6 +142,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 ROOT_HOSTCONF = 'main.hosts'
+DEFAULT_HOST = 'www'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )

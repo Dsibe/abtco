@@ -1,7 +1,9 @@
 from django.conf import settings
-from django_hosts import patterns, hosthost_patterns = patterns(
+from django_hosts import patterns, host
+
+host_patterns = patterns(
     '',
-    host(r'www', 'main.urls.py', name='www'),
-    host(r'', 'main.urls.py', name='root'),
-    host(r'khatynka', 'khatynka.urls.py', name='khatynka'),
+    host(r'www', 'main.urls', name='www'),
+    host(r'', 'main.urls', name='root'),
+    host(r'khatynka', 'khatynka.urls', name='khatynka'),
 )
