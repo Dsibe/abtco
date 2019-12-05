@@ -142,7 +142,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 ROOT_HOSTCONF = 'main.hosts'
-DEFAULT_HOST = 'khatynka'
+DEFAULT_HOST = 'www'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
