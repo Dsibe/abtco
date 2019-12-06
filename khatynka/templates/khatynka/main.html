@@ -3,6 +3,48 @@
 <html lang="en">
 
 <head>
+  <style>
+    @media only screen and (max-width: 400px) and (min-width: 1px) {
+      #maintenance {
+        width: 100%;
+      }
+
+      #khatynka {
+        width: 50%;
+      }
+    }
+
+    @media only screen and (max-width: 500px) and (min-width: 400px) {
+      #maintenance {
+        width: 60%;
+      }
+
+      #khatynka {
+        width: 30%;
+      }
+    }
+
+    @media only screen and (max-width: 1024px) and (min-width: 500px) {
+      #maintenance {
+        width: 40%;
+      }
+
+      #khatynka {
+        width: 20%;
+      }
+    }
+
+    @media only screen and (min-width: 1024px) {
+      #maintenance {
+        width: 30%;
+      }
+
+      #khatynka {
+        width: 15%;
+      }
+    }
+  </style>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -21,9 +63,16 @@
   <div class="container">
     <div class="row">
       <div class="col-12">
-        <img class="mx-auto d-block" style="margin-top: 12%!important" src="https://code-d.000webhostapp.com/site_under_maintenance.png" height="50%" />
+        <img id="maintenance" class="mx-auto d-block" style="margin-top: 6%; margin-bottom: 3%"
+          src="https://uc7ecdcc31836901587c7b82b0ae.dl.dropboxusercontent.com/cd/0/get/AttezhLX_eQg0tRfKnEf2L9O5vbiR1XP2VIS_9CfyJhimMwR9H2h-RER5ItMLFTeSKM2QWorU86UUz65Fnu4Wg09VOe_mG41-dKqq0ZcGK6WefxQf50P8RVypI_IejP9dcw/file?dl=1#" />
+        <img id="khatynka" class="mx-auto d-block" style="bottom: 5%"
+          src="https://ucfb3c646b5d0a97d7f419df4cc9.dl.dropboxusercontent.com/cd/0/get/AtuObfQ-Qnp2jNuGCw_3dFztIFFDFu2MZRK2za59F9fN6jOB4Dza_cL-mrfklLNbLpQHW7YbJ-T1n1X5Z7O_Zhjs0LD1P9YAMKEj8G4nQafYq49d_A18R_KrRhCkFgELSQk/file?dl=1#" />
       </div>
     </div>
+  </div>
+  <div style="position: absolute; bottom: 10px; left: 45%">
+    <hr class="mr-5 ml-5">
+    <small style="color: grey;">© 2019 All rights reserved.</small>
   </div>
 </body>
 
