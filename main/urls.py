@@ -39,6 +39,7 @@ urlpatterns = [
     path('developing/', developing, name="developing"),
     path('contact-us/', contact_us, name="contact-us"),
     path('fuel-additives/', fuel_additives, name="fuel-additives"),
+    path('hedge-fund/', hedge_fund, name='hedge-fund'),
     path('websites-developing/',
          websites_developing,
          name="websites-developing"),

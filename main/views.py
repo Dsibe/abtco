@@ -13,6 +13,10 @@ from users.models import *
 dates = []
 
 
+def hedge_fund(request):
+    return render(request, r'main\hedge-fund.html')
+
+
 def departments(request):
     return render(request, r'main/departments.html')
 
@@ -23,6 +27,8 @@ def main(request):
     global dates
 
     def add_unlocked(user):
+        print(user)
+        print(user.unlocked)
         if int(user.unlocked) < 15:
             if int(user.unlocked) <= 2:
                 unlocked = int(user.unlocked) + 1
@@ -39,10 +45,9 @@ def main(request):
                     print(user, user.unlocked)
 
     day = datetime.datetime.today().weekday()
-    if day == 0 or day == 3:
 
+    if True:
         date = str(datetime.datetime.now())[:10]
-        print('Date: ', date)
         dates = Dates.objects.filter(dates=date)
         if not dates:
             Dates.objects.create(dates=date)
@@ -54,11 +59,12 @@ def main(request):
 
 
 def ud(request):
-    return HttpResponse("<h1>Under Construction</h1>")
+    return HttpResponse(
+        "<h1 style='text-align: center'>Under Construction</h1>")
 
 
 def developing(request):
-    return render(request, r'main/developing.html')
+    return redirect('http://www.4organizer.com')
 
 
 def junior_studio(request):
@@ -75,16 +81,15 @@ def contact_us(request):
             email = form.cleaned_data['email']
             message = form.cleaned_data['message']
             send_mail(f'New contact-us message from {email}, name: {name}',
-                      message, 'school@abtco.us', [
-                          'school@abtco.us', 'darik.pc@gmail.com',
-                          'abt.company@aol.com'
+                      message, 'abtcous2014@gmail.com', [
+                          'abt.company@aol.com', 'darik.pc@gmail.com',
+                          'abtcous2014@gmail.com'
                       ])
             return HttpResponse('You message has been sended succesfully')
     return render(request, r'main/contact_us.html', context={'form': form})
 
 
 def trading(request):
-    print('Trading')
     return render(request, r'main/trading.html')
 
 

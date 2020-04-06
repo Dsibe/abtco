@@ -38,6 +38,7 @@ urlpatterns = [
     path('trading-ua-g/', trading_ua_g, name='trading-ua-g'),
     path('developing/', developing, name="developing"),
     path('contact-us/', contact_us, name="contact-us"),
+    path('hedge-fund/', hedge_fund, name='hedge-fund'),
     path('fuel-additives/', fuel_additives, name="fuel-additives"),
     path('websites-developing/',
          websites_developing,

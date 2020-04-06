@@ -189,7 +189,7 @@ def profile(request):
         for i in range(1, int(user_profile.unlocked) + 1):
             posts |= Post.objects.filter(title=i)
             print(posts)
-
+        posts = posts.order_by('title')
         context = {"user": user, "posts": posts}
         return render(request, "users/profile.html", context)
 
