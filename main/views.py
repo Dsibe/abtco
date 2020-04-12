@@ -14,7 +14,7 @@ dates = []
 
 
 def hedge_fund(request):
-    return render(request, r'main\hedge-fund.html')
+    return render(request, r'main/hedge-fund.html')
 
 
 def departments(request):
