@@ -1,3 +1,4 @@
+import operator
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
@@ -189,8 +190,16 @@ def profile(request):
         for i in range(1, int(user_profile.unlocked) + 1):
             posts |= Post.objects.filter(title=i)
             print(posts)
-        # posts = posts.order_by('title')
-        context = {"user": user, "posts": posts}
+
+        def sort(i):
+            return int(i.title)
+
+        ordered = []
+        for post in posts:
+            ordered.append(post)
+        ordered = sorted(ordered, key=sort)
+
+        context = {"user": user, "posts": ordered}
         return render(request, "users/profile.html", context)
 
 
