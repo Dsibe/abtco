@@ -1,0 +1,101 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<style>
+.btn-hover:hover {
+  background-color: #ED1C24 !important;
+  color: white !important;
+}
+
+.row a:hover {
+  text-decoration: none;
+  background-color: #ED1C24 !important;
+  color: white !important;
+}
+
+.row a {
+  border: 2px solid #ED1C24;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 0 auto;
+  color: #21409A;
+  background-color: white;
+
+
+}
+
+
+</style>
+
+<!--
+<div class="carousel slide mt-5" data-ride="carousel">
+  <div class="carousel-inner" style="border-radius: 10px">
+    <div class="carousel-item active">
+        <img src="http://abtco.us/wp-content/uploads/0001.jpg" class="d-block w-100">
+    </div>
+    <div class="carousel-item" style="border-radius: 10px">
+      <img src="http://abtco.us/wp-content/uploads/0002.jpg" class="d-block w-100">
+    </div>
+    <div class="carousel-item" style="border-radius: 10px">
+      <img src="http://abtco.us/wp-content/uploads/0003.jpg" class="d-block w-100">
+    </div>
+    <div class="carousel-item" style="border-radius: 10px">
+      <img src="http://abtco.us/wp-content/uploads/0004.jpg" class="d-block w-100">
+    </div>
+    <div class="carousel-item" style="border-radius: 10px">
+      <img src="http://abtco.us/wp-content/uploads/0005.jpg" class="d-block w-100">
+    </div>
+    <div class="carousel-item" style="border-radius: 10px">
+      <img src="http://abtco.us/wp-content/uploads/0006.jpg" class="d-block w-100">
+    </div>
+    <div class="carousel-item" style="border-radius: 10px">
+      <img src="http://abtco.us/wp-content/uploads/0007.jpg" class="d-block w-100">
+    </div>
+    <div class="carousel-item" style="border-radius: 10px">
+      <img src="http://abtco.us/wp-content/uploads/0008.jpg" class="d-block w-100">
+    </div>
+  </div>
+</div> -->
+
+
+<div>
+
+  <h1 class="mt-2" style="color: #21409A; text-align: center;">Our Departments:</h1>
+
+
+  <div style="text-align: center">
+    <div class="row">
+      <a href="/hedge-fund" class="btn-hover col-12 col-sm-12 col-md-4 col-lg-3 mt-3">Hedge fund</a>
+    </div>
+
+    <div class="row">
+      <a href="/trading" class="btn-hover col-12 col-sm-12 col-md-4 col-lg-3 mt-3">Trading & Investing Courses</a>
+    </div>
+
+    <div class="row">
+      <a href="http://khatynka.abtco.us" class="btn-hover col-12 col-sm-12 col-md-4 col-lg-3 mt-3">Design Studio "Khatynka"</a>
+    </div>
+
+    <!-- <div class="row">
+      <a href="/junior-studio" class="btn-hover col-12 col-sm-12 col-md-4 col-lg-3 mt-3">Junior Studio</a>
+    </div> -->
+
+    <div class="row">
+      <a href="/developing" class="btn-hover col-12 col-sm-12 col-md-4 col-lg-3 mt-3">Programs Development</a>
+    </div>
+
+    <!-- 
+    <div class="row">
+      <a href="fuel-additives" class="btn-hover col-12 col-sm-12 col-md-4 col-lg-3 mt-3">Fuel Additives</a>
+    </div> -->
+
+    <!-- <div class="row">
+      <a href="websites-developing" class="btn-hover col-12 col-sm-12 col-md-4 col-lg-3 mt-3 mb-3">Websites Development</a>
+    </div> -->
+  </div>
+
+
+
+  {% endblock %}

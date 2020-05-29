@@ -58,7 +58,9 @@ TEMPLATES = [
         'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'TEMPLATES'),
-            os.path.join(BASE_DIR, 'khatynka/templates')
+            os.path.join(BASE_DIR, 'khatynka/templates'),
+            os.path.join(BASE_DIR, 'main/templates'),
+            os.path.join(BASE_DIR, 'abtco/main/templates')
         ],
         'APP_DIRS':
         True,
