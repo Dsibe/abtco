@@ -60,7 +60,8 @@ TEMPLATES = [
             os.path.join(BASE_DIR, 'TEMPLATES'),
             os.path.join(BASE_DIR, 'khatynka/templates'),
             os.path.join(BASE_DIR, 'main/templates'),
-            os.path.join(BASE_DIR, 'abtco/main/templates')
+            os.path.join(BASE_DIR, 'abtco/main/templates'),
+            os.path.join(BASE_DIR, 'users/templates'),
         ],
         'APP_DIRS':
         True,
