@@ -143,6 +143,14 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'abtcous2014@gmail.com'
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_USER', 'ABTco777&&&')
 
+# EMAIL_HOST = 'smtp.aol.com'
+# # EMAIL_USE_TLS = True
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+# # EMAIL_USE_SSL = True
+# EMAIL_HOST_USER = 'abt.company@aol.com'
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_USER', '08092005d')
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Static files (CSS, JavaScript, Images)
