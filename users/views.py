@@ -1,3 +1,4 @@
+from django.template import engines
 import operator
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect
@@ -17,6 +18,8 @@ from django.conf import settings
 from decimal import Decimal
 from paypal.standard.forms import PayPalPaymentsForm
 
+django_engine = engines['django']
+
 
 def thirdlesson(request):
     return redirect("process_payment")
@@ -32,7 +35,7 @@ def process_payment(request, course):
 
     paypal_dict = {
         "business": settings.PAYPAL_RECEIVER_EMAIL,
-        "amount": "199.95",
+        "amount": "49.99",
         "item_name": course,
         "invoice": randint(1, 10000000),
         "currency_code": "USD",
@@ -143,7 +146,16 @@ def post_detail(request, slug):
     #     else:
     #         to_find = False
 
-    post.body = body
+    # <img src="http://code-d.000webhostapp.com/
+
+    body = body.replace('http://abtco.us/', '{% static "lesson_imgs/')
+    body = body.replace('http://code-d.000webhostapp.com/', '{% static "lesson_imgs/')
+    body = body.replace('">', '" %}">')
+
+    new_body = f'{{% load static %}}\n{body}'
+    template_body = django_engine.from_string(new_body).render()
+    post.body = template_body
+
     context = {"post": post}
     if post.title == "3":
         user = User.objects.get(username=request.user.username)

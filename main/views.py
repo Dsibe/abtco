@@ -45,8 +45,7 @@ def main(request):
                     print(user, user.unlocked)
 
     day = datetime.datetime.today().weekday()
-
-    if True:
+    if day in [0, 3]:
         date = str(datetime.datetime.now())[:10]
         dates = Dates.objects.filter(dates=date)
         if not dates:
@@ -81,10 +80,8 @@ def contact_us(request):
             email = form.cleaned_data['email']
             message = form.cleaned_data['message']
             send_mail(f'New contact-us message from {email}, name: {name}',
-                      message, 'abtcous2014@gmail.com', [
-                          'abt.company@aol.com', 'darik.pc@gmail.com',
-                          'abtcous2014@gmail.com'
-                      ])
+                      message, 'abtcous2014@gmail.com',
+                      ['abt.company@aol.com', 'darik.pc@gmail.com'])
             return HttpResponse('You message has been sended succesfully')
     return render(request, r'main/contact_us.html', context={'form': form})
 
@@ -214,7 +211,7 @@ def trading_ru_g(request):
 
 После оплаты вы получите доступ к полному курсу по расписанию,
 согласно выбранной вами группы.
-Стоимость полного курса составляет — 199.95$
+Стоимость полного курса составляет — 49.99$
 """
     return render(request, r'main/trading_ru_g.html', context={'body': body})
 

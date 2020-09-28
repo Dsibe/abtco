@@ -1,3 +1,4 @@
+import re
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
@@ -43,3 +44,7 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post_detail_url', kwargs={'slug': self.slug})
+    
+    def change_urls(self):
+        pattern = r'<img src="http://code-d.000webhostapp.com/.*">'
+        new_body = re.sub(pattern, )
