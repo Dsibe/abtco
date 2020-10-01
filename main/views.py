@@ -211,7 +211,8 @@ def trading_ru_g(request):
 
 После оплаты вы получите доступ к полному курсу по расписанию,
 согласно выбранной вами группы.
-Стоимость полного курса составляет — 49.99$
+Стоимость полного курса составляет — $199.99
+<strong style="color: #F32A2E">Индивидуальное VIP обучение — $500.00</strong>, дополнительная информацию по запросу <a href="http://www.abtco.us/contact-us/">contact us</a>.
 """
     return render(request, r'main/trading_ru_g.html', context={'body': body})
 
