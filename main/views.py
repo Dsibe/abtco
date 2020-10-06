@@ -13,6 +13,9 @@ from users.models import *
 dates = []
 
 
+def psy_finance(request):
+    return render(request, r'main/psy_finance.html')
+    
 def hedge_fund(request):
     return render(request, r'main/hedge-fund.html')
 
@@ -59,11 +62,12 @@ def main(request):
 
 def ud(request):
     return HttpResponse(
-        "<h1 style='text-align: center'>Under Construction</h1>")
+        "<h1 style='text-align: center; font-family: arial; color: #21409A;'>Under Construction</h1>")
 
 
 def developing(request):
-    return redirect('http://www.4organizer.com')
+    return render(request, r'main/developing.html')
+    # return redirect('http://www.4organizer.com')
 
 
 def junior_studio(request):
