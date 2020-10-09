@@ -1,22 +1,21 @@
-from django.template import engines
 import operator
-from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
-from django.shortcuts import get_object_or_404
-from django.contrib.auth.decorators import login_required
-from django.template import Context, Template
-from django.contrib.auth.models import User
-from .models import *
-from .forms import *
-from paypal.standard.models import ST_PP_COMPLETED
-from paypal.standard.ipn.signals import valid_ipn_received, invalid_ipn_received
-
-from django.core.mail import send_mail
+from decimal import Decimal
 
 from django.conf import settings
-from decimal import Decimal
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.core.mail import send_mail
+from django.shortcuts import get_object_or_404, redirect, render
+from django.template import Context, Template, engines
+from django.views.decorators.csrf import csrf_exempt
 from paypal.standard.forms import PayPalPaymentsForm
+from paypal.standard.ipn.signals import (invalid_ipn_received,
+                                         valid_ipn_received)
+from paypal.standard.models import ST_PP_COMPLETED
+
+from .forms import *
+from .models import *
 
 django_engine = engines['django']
 
@@ -35,7 +34,7 @@ def process_payment(request, course):
 
     paypal_dict = {
         "business": settings.PAYPAL_RECEIVER_EMAIL,
-        "amount": "49.99",
+        "amount": "199.99",
         "item_name": course,
         "invoice": randint(1, 10000000),
         "currency_code": "USD",
@@ -54,7 +53,6 @@ def process_payment(request, course):
 
 @csrf_exempt
 def payment_done(request):
-
     return render(request, "users/payment_done.html")
 
 
@@ -66,21 +64,14 @@ def payment_canceled(request):
 def show_me_the_money(sender, **kwargs):
     ipn_obj = sender
 
-    # ipn_obj = sender
     if ipn_obj.payment_status == ST_PP_COMPLETED:
-        print("Received payment")
 
         profile = ipn_obj.custom
         user = User.objects.get(username=profile)
         profile = Profile.objects.get(user=user)
-        print()
-        print(type(profile))
-        print()
-        # user = ipn_obj.custom[0]
 
         profile.ppaid = True
         profile.save()
-        print("save")
 
         email = user.email
 
@@ -98,11 +89,10 @@ def show_me_the_money(sender, **kwargs):
             fail_silently=False,
         )
     else:
-        print("Failed")
+        pass
 
 
 valid_ipn_received.connect(show_me_the_money)
-
 invalid_ipn_received.connect(show_me_the_money)
 
 
@@ -110,46 +100,40 @@ invalid_ipn_received.connect(show_me_the_money)
 def post_detail(request, slug):
     post = get_object_or_404(Post, slug__iexact=slug)
     body = post.body
-    body = body.replace("<r>", '<span style="color: red;">')
-    body = body.replace("</r>", "</span>")
-    body = body.replace("<g>", '<span style="color: #28ed12;">')
-    body = body.replace("</g>", "</span>")
-    body = body.replace("<b>", '<span style="color: #21409a;">')
-    body = body.replace("</b>", "</span>")
-    body = body.replace("<r", '<span style="color: red;">')
-    body = body.replace("r>", "</span>")
-    body = body.replace("<g", '<span style="color: #28ed12;">')
-    body = body.replace("g>", "</span>")
-    body = body.replace("<b", '<span style="color: #21409a;">')
-    body = body.replace("b>", "</span>")
-    body = body.replace("<R>", '<span style="color: red;">')
-    body = body.replace("</R>", "</span>")
-    body = body.replace("<G>", '<span style="color: #28ed12;">')
-    body = body.replace("</G>", "</span>")
-    body = body.replace("<B>", '<span style="color: #21409a;">')
-    body = body.replace("</B>", "</span>")
-    body = body.replace("<R", '<span style="color: red;">')
-    body = body.replace("R>", "</span>")
-    body = body.replace("<G", '<span style="color: #28ed12;">')
-    body = body.replace("G>", "</span>")
-    body = body.replace("<B", '<span style="color: #21409a;">')
-    body = body.replace("B>", "</span>")
 
-    # body = body.replace('<a', '<a href="">')
-    # body = body.replace('a>', '</a>')
-    #
-    # to_find = True
-    # while to_find:
-    #     if body.find('<a href="">') != -1:
-    #         link = body[body.find('<a href="">'):body.find('</a>')]
-    #         body = body.replace('<a href="">', f'<a href="{link}">')
-    #     else:
-    #         to_find = False
+    replace_pairs = (
+        ("<r>", '<span style="color: red;">'),
+        ("</r>", "</span>"),
+        ("<g>", '<span style="color: #28ed12;">'),
+        ("</g>", "</span>"),
+        ("<b>", '<span style="color: #21409a;">'),
+        ("</b>", "</span>"),
+        ("<r", '<span style="color: red;">'),
+        ("r>", "</span>"),
+        ("<g", '<span style="color: #28ed12;">'),
+        ("g>", "</span>"),
+        ("<b", '<span style="color: #21409a;">'),
+        ("b>", "</span>"),
+        ("<R>", '<span style="color: red;">'),
+        ("</R>", "</span>"),
+        ("<G>", '<span style="color: #28ed12;">'),
+        ("</G>", "</span>"),
+        ("<B>", '<span style="color: #21409a;">'),
+        ("</B>", "</span>"),
+        ("<R", '<span style="color: red;">'),
+        ("R>", "</span>"),
+        ("<G", '<span style="color: #28ed12;">'),
+        ("G>", "</span>"),
+        ("<B", '<span style="color: #21409a;">'),
+        ("B>", "</span>"),
+    )
 
-    # <img src="http://code-d.000webhostapp.com/
+    for to_find, to_replace in replace_pairs:
+        body = body.replace(to_find, to_replace)
 
     body = body.replace('http://abtco.us/', '{% static "lesson_imgs/')
-    body = body.replace('http://code-d.000webhostapp.com/', '{% static "lesson_imgs/')
+    body = body.replace('http://code-d.000webhostapp.com/',
+                        '{% static "lesson_imgs/')
     body = body.replace('">', '" %}">')
 
     new_body = f'{{% load static %}}\n{body}'
@@ -160,7 +144,6 @@ def post_detail(request, slug):
     if post.title == "3":
         user = User.objects.get(username=request.user.username)
         profile = Profile.objects.get(user=request.user)
-        print(type(profile))
 
         host = request.get_host()
 
@@ -168,7 +151,7 @@ def post_detail(request, slug):
             "business":
             settings.PAYPAL_RECEIVER_EMAIL,
             "amount":
-            "49.95",
+            "199.95",
             "item_name":
             "rug",
             "invoice":
@@ -193,30 +176,21 @@ def post_detail(request, slug):
 @login_required
 def profile(request):
     if request.method == "GET":
-
         user = request.user
         user_profile = Profile.objects.get(user=user)
 
         posts = Post.objects.filter(id=122112291888818218)
-        print(user_profile.unlocked)
         for i in range(1, int(user_profile.unlocked) + 1):
             posts |= Post.objects.filter(title=i)
             print(posts)
 
-        def sort(i):
-            return int(i.title)
-
         ordered = []
         for post in posts:
             ordered.append(post)
-        ordered = sorted(ordered, key=sort)
+        ordered = sorted(ordered, key=lambda i: int(i.title))
 
         context = {"user": user, "posts": ordered}
         return render(request, "users/profile.html", context)
-
-
-# def login(request):
-#       return render(request, 'users/login-fb.html')
 
 
 def register(request):

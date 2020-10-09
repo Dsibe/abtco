@@ -21,7 +21,6 @@ urlpatterns = [
     path('departments/', departments, name='departments'),
     path('junior-studio/', junior_studio, name="junior-studio"),
     path('psy-finance/', psy_finance, name="psy-finance"),
-    
     path('trading/', trading, name='trading'),
     path('trading-ru/', trading_ru, name='trading-ru'),
     path('trading-en/', trading_en, name='trading-en'),

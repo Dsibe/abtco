@@ -26,8 +26,7 @@ class Profile(models.Model):
 
 def gen_slug():
     return slugify(
-        str(randint(1, 1000000000000000)) + str(uuid4()) +
-        str(datetime.datetime.now()))
+        f'{randint(1, 1000000000000000)}{uuid4()}{datetime.datetime.now()}')
 
 
 class Post(models.Model):
@@ -44,7 +43,7 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post_detail_url', kwargs={'slug': self.slug})
-    
+
     def change_urls(self):
         pattern = r'<img src="http://code-d.000webhostapp.com/.*">'
         new_body = re.sub(pattern, )

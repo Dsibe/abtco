@@ -6,7 +6,7 @@ from main.views import *
 from users.views import *
 from django.contrib.auth import views as auth_views
 from users.models import *
-# Startup
+
 from os import environ
 from users.models import *
 
@@ -15,7 +15,8 @@ dates = []
 
 def psy_finance(request):
     return render(request, r'main/psy_finance.html')
-    
+
+
 def hedge_fund(request):
     return render(request, r'main/hedge-fund.html')
 
@@ -26,43 +27,38 @@ def departments(request):
 
 def main(request):
     envir = environ
-    # Должно быть типа request.user
     global dates
 
     def add_unlocked(user):
-        print(user)
-        print(user.unlocked)
         if int(user.unlocked) < 15:
             if int(user.unlocked) <= 2:
                 unlocked = int(user.unlocked) + 1
                 user.unlocked = unlocked
                 user.save()
-                print(user, user.unlocked)
-                # print('Free')
+
             elif int(user.unlocked) >= 3:
                 if user.ppaid == True:
                     unlocked = int(user.unlocked) + 1
                     user.unlocked = unlocked
-                    # print(user.unlocked, user)
                     user.save()
-                    print(user, user.unlocked)
 
     day = datetime.datetime.today().weekday()
     if day in [0, 3]:
         date = str(datetime.datetime.now())[:10]
         dates = Dates.objects.filter(dates=date)
+
         if not dates:
             Dates.objects.create(dates=date)
-            print(Dates.objects.all())
             for user in Profile.objects.all():
-                print(user)
                 add_unlocked(user)
+
     return render(request, r'main/main.html', context={'env': envir})
 
 
 def ud(request):
     return HttpResponse(
-        "<h1 style='text-align: center; font-family: arial; color: #21409A;'>Under Construction</h1>")
+        "<h1 style='text-align: center; font-family: arial; color: #21409A;'>Under Construction</h1>"
+    )
 
 
 def developing(request):
