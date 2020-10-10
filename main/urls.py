@@ -22,6 +22,7 @@ urlpatterns = [
     path('junior-studio/', junior_studio, name="junior-studio"),
     path('psy-finance/', psy_finance, name="psy-finance"),
     path('trading/', trading, name='trading'),
+    path('t/', trading_ru_g, name='trading-ru-g-t'),
     path('trading-ru/', trading_ru, name='trading-ru'),
     path('trading-en/', trading_en, name='trading-en'),
     path('trading-ua/', trading_ua, name='trading-ua'),
