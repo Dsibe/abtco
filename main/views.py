@@ -210,9 +210,15 @@ def trading_ru_g(request):
 
 После оплаты вы получите доступ к полному курсу по расписанию,
 согласно выбранной вами группы.
+
 Стоимость полного курса составляет — $199.99
-<strong style="color: #F32A2E">Индивидуальное VIP обучение — $500.00</strong>, дополнительная информацию по запросу <a href="http://www.abtco.us/contact-us/">contact us</a>.
-"""
+Для записи на групповой курс нажмите на кнопку ниже.
+
+Доступны новые опции:
+<strong style="color: #F32A2E">Индивидуальное VIP обучение — $500.00</strong>
+<strong style="color: #F32A2E">Обучение с ментором и оплата из ЗАРАБОТАННЫХ средств — $1995.95</strong>
+
+Дополнительная информацию или <strong style="color: #F32A2E">запись по запросу через email:</strong> <a href="mailto:abt.company@aol.com">abt.company@aol.com</a>"""
     return render(request, r'main/trading_ru_g.html', context={'body': body})
 
 
