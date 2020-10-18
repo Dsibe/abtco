@@ -16,6 +16,10 @@ def psy_finance(request):
     return render(request, r'main/psy_finance.html')
 
 
+def reviews(request):
+    return render(request, r'main/reviews.html')
+
+
 def hedge_fund(request):
     return render(request, r'main/hedge-fund.html')
 

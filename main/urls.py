@@ -8,6 +8,7 @@ from users.models import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('reviews/', reviews, name='reviews'),
     path('underconstruction/', ud, name='ud'),
     path('business/', business, name='business'),
     path('paypal/', include('paypal.standard.ipn.urls')),
