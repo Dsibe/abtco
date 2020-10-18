@@ -21,6 +21,7 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     'abtcoproject.herokuapp.com',
+    '5076cae0dd4e.ngrok.io'
 ]
 
 INSTALLED_APPS = [
@@ -126,8 +127,11 @@ USE_I18N = True
 USE_L10N = True
 
 PAYPAL_RECEIVER_EMAIL = 'abt.company@aol.com'
-
 PAYPAL_TEST = False
+
+# PAYPAL_RECEIVER_EMAIL = 'abt.company-facilitator@aol.com'
+# PAYPAL_TEST = True
+
 
 USE_TZ = True
 
