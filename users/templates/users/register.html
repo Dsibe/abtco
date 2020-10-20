@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  <div class="content-section">
+    <form method="POST">
+      {% csrf_token %}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Регистрация</legend>
+        {{ form|crispy }}
+      </fieldset>
+      <div class="form-group" style="text-align: center;">
+        <h5 class="mt-2 mb-2">В данный момент свободна только одна группа: Понедельник - Четверг.<br>В эти дни вам будут открываться новые уроки.</h5>
+        <button class="btn btn-success mt-2" type="submit">Sign up</button>
+      </div>
+      <div class="border-top pt-3"></div>
+
+    </div>
+
+  {% endblock %}

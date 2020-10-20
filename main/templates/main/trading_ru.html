@@ -1,0 +1,60 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+  <style>
+    .btn-hover:hover {
+    background-color: #ED1C24 !important;
+    color: white !important;
+
+  }
+
+  a {
+    color: #21409a;
+  }
+
+  p {
+    margin: 0 auto !important;
+  }
+
+  a:hover {
+    color: white;
+    text-decoration: none;
+  }
+
+  .btn-hover {
+    border: 2px solid #ED1C24;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    height: auto;
+    color: #21409A;
+    background-color: white;
+    "
+
+  }
+</style>
+
+<div class="container">
+  <div class="row">
+
+    <a href="{% url 'trading-ru-g' %}" style="text-align: center;" class="row-eq-height mr-2 ml-2 mt-5 col-12">
+      <p style="font-weight: 500" class="btn-hover">
+        Курс в группе<br><strong>$199.99</strong>
+        <br><br>
+        VIP обучение<br><strong>$500.00</strong>
+      </p>
+    </a>
+
+
+    <a href="{% url 'trading-ru-i' %}" style="text-align: center;" class="row-eq-height mr-2 ml-2 mt-5 col-12">
+      <p style="font-weight: 500" class="btn-hover">
+        Курс индивидуальный<br>⋅ Личный Наставник<br>⋅ Информация<br>⋅ Торговля На Реальном Счету<br>⋅ Заработок<br>⋅ Оплата Курса Из Заработанных Средств<br><strong>$1995.95</strong>
+      </p>
+    </a>
+  </div>
+</div>
+
+
+
+{% endblock %}

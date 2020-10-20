@@ -1,0 +1,65 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+  <style>
+    .mt-4 a:hover {
+    color: white;
+    background-color: #ED1C24 !important;
+    text-decoration: none;
+  }
+
+  .mt-4 a {
+    border: 2px solid #ED1C24;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    width: 25%;
+    color: #21409A;
+    background-color: white;
+    "
+
+  }
+</style>
+
+
+
+<style>
+  img {
+    width: 100%;
+    max-width: 80%;
+  }
+</style>
+
+<div class="row mt-5">
+  
+  <div class="col-10 col-sm-10 col-md-10" style="background-color: #EAF3FA; margin-right: -1.3%">
+    <p>{{ body | safe | linebreaks}}</p>
+  </div>
+
+  <div class="col-2">
+    <div style="background-color: #F32A2E; width: 100%; height: 40%">
+    </div>
+    <div style="background-color: #F14133; width: 100%; height: 20%">
+    </div>
+    <div style="background-color: #ED5C55; width: 100%; height: 20%">
+    </div>
+    <div style="background-color: #DF8479; width: 100%; height: 20%">
+    </div>
+  </div>
+
+  
+</div>
+
+
+<div class="mt-4 mb-4" style="text-align: center;">
+  <a class="btn-hoover col-12 col-sm-12 col-md-5" href="/reviews">Отзывы наших учеников</a>
+</div>
+
+<div class="mt-4 mb-4" style="text-align: center;">
+  <a class="btn-hoover col-12 col-sm-12 col-md-5" href="{% url 'register' %}">Записаться на курс!</a>
+</div>
+
+
+{% endblock %}
