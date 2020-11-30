@@ -60,7 +60,7 @@ def main(request):
 
 def ud(request):
     return HttpResponse(
-        "<h1 style='text-align: center; font-family: arial; color: #21409A;'>Under Construction</h1>"
+        """<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"><div class="container col-12 "><div class="col-12 row h-100"><div style="border: 2px solid red; border-radius: 25px; padding: 30px" class="align-middle my-auto mx-auto"><h1 style='text-align: center; font-family: arial; color: #21409A;'>We are still trying to translate it for you.<br>Please come back soon.<br>Sorry for inconvenience and thank you.<br><span style='color: red'>ABTco team</span></h1></div></div></div>"""
     )
 
 
