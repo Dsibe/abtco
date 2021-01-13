@@ -12,6 +12,7 @@ from users.models import *
 
 dates = []
 
+
 def psy_finance(request):
     return render(request, r'main/psy_finance.html')
 
@@ -71,6 +72,10 @@ def developing(request):
 
 def junior_studio(request):
     return render(request, r'main/junior_studio.html')
+
+
+def trial(request):
+    return render(request, r'main/trial.html')
 
 
 def contact_us(request):
