@@ -78,6 +78,14 @@ def trial(request):
     return render(request, r'main/trial.html')
 
 
+def trial_ru(request):
+    return render(request, r'main/trial_ru.html')
+
+
+def trial_en(request):
+    return render(request, r'main/trial_en.html')
+
+
 def contact_us(request):
     if request.method == 'GET':
         form = ContactUsForm()

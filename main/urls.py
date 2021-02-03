@@ -8,6 +8,8 @@ from users.models import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('trial-ru/', trial_ru, name='trial-ru'),
+    path('trial-en/', trial_en, name='trial-en'),
     path('trial/', trial, name='trial'),
     path('trading-ru-g-ig/', trading_ru_g, name='trading-ru-g'),
     path('reviews/', reviews, name='reviews'),
