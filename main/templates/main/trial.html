@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+  <style>
+    .btn-hover:hover {
+      background-color: #ED1C24 !important;
+      color: white !important;
+    }
+    .button a:hover {
+      text-decoration: none;
+      background-color: #ED1C24 !important;
+      color: white !important;
+    }
+    .button a {
+      border: 2px solid #ED1C24;
+      text-decoration: none;
+      padding: 10px;
+      border-radius: 10px;
+      margin: 0 auto;
+      color: #21409A;
+      background-color: white;
+    }
+  </style>
+
+  <div>
+    <div style="text-align: center">
+      <div class="row button">
+        <a href="/trial-en" class="btn-hover col-12 col-sm-12 col-md-6 col-lg-5 mt-3" style="font-size: 25px; font-family: arial">Free trial lessons 🇺🇸</a>
+      </div>
+
+      <div class="row button">
+        <a href="/trial-ru" class="btn-hover col-12 col-sm-12 col-md-6 col-lg-5 mt-3" style="font-size: 25px; font-family: arial">Бесплатные тестовые уроки 🇷🇺</a>
+      </div>
+    </div>
+
+  {% endblock %}

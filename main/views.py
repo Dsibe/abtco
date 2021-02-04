@@ -12,6 +12,7 @@ from users.models import *
 
 dates = []
 
+
 def psy_finance(request):
     return render(request, r'main/psy_finance.html')
 
@@ -73,6 +74,18 @@ def junior_studio(request):
     return render(request, r'main/junior_studio.html')
 
 
+def trial(request):
+    return render(request, r'main/trial.html')
+
+
+def trial_ru(request):
+    return render(request, r'main/trial_ru.html')
+
+
+def trial_en(request):
+    return render(request, r'main/trial_en.html')
+
+
 def contact_us(request):
     if request.method == 'GET':
         form = ContactUsForm()
@@ -82,9 +95,9 @@ def contact_us(request):
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
             message = form.cleaned_data['message']
-            send_mail(f'New contact-us message from {email}, name: {name}',
-                      message, 'abtcous2014@gmail.com',
-                      ['abt.company@aol.com', 'darik.pc@gmail.com'])
+            # send_mail(f'New contact-us message from {email}, name: {name}',
+            #           message, 'abtcous2014@gmail.com',
+            #           ['abt.company@aol.com', 'darik.pc@gmail.com'])
             return HttpResponse('You message has been sended succesfully')
     return render(request, r'main/contact_us.html', context={'form': form})
 
