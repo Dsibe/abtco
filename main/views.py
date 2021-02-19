@@ -85,6 +85,9 @@ def trial_ru(request):
 def trial_en(request):
     return render(request, r'main/trial_en.html')
 
+def trial_fr(request):
+    return render(request, r'main/trial_fr.html')
+
 
 def contact_us(request):
     if request.method == 'GET':
