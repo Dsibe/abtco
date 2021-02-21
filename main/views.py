@@ -82,8 +82,17 @@ def trial_ru(request):
     return render(request, r'main/trial_ru.html')
 
 
+def trial_ua(request):
+    return render(request, r'main/trial_ua.html')
+
+
+def trial_es(request):
+    return render(request, r'main/trial_es.html')
+
+
 def trial_en(request):
     return render(request, r'main/trial_en.html')
+
 
 def trial_fr(request):
     return render(request, r'main/trial_fr.html')
