@@ -13,6 +13,14 @@ from users.models import *
 dates = []
 
 
+def consulting(request):
+    return render(request, r'main/consulting.html')
+
+
+def consulting_ru(request):
+    return render(request, r'main/consulting_ru.html')
+
+
 def psy_finance(request):
     return render(request, r'main/psy_finance.html')
 
