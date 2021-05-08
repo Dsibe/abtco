@@ -34,7 +34,7 @@ def process_payment(request, course):
 
     paypal_dict = {
         "business": settings.PAYPAL_RECEIVER_EMAIL,
-        "amount": "199.99",
+        "amount": "299.99",
         "item_name": course,
         "invoice": randint(1, 10000000),
         "currency_code": "USD",
