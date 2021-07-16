@@ -1,0 +1,223 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+
+      .custom-input {
+        color: var(--text-color);
+        border: 2px solid lightblue;
+        background-color: white;
+        border-radius: 20px;
+        height: 42px;
+        padding: 21px;
+        transition: box-shadow linear 0.2s, border-color linear 0.5s;
+      }
+      .custom-input:focus {
+        box-shadow: 0 0 15px 1px lightblue;
+        border: 2px solid lightblue;
+        outline: none;
+      }
+      .custom-input:focus-visible {
+        box-shadow: 0 0 15px 1px lightblue;
+        border: 2px solid lightblue;
+        outline: none;
+      }
+      .fade-in {
+        -webkit-animation: fade-in 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+        animation: fade-in 0.5s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+      }
+      @-webkit-keyframes fade-in {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      @keyframes fade-in {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .invisible {
+        display: none!important;
+      }
+      .background-gradient {
+        background-color: #5178bc;
+        background: linear-gradient(to bottom, #5178bc 0%, #488ecc 70%, #48acaa 95%, #48acaa 100%);
+      }
+      .background-gradient {
+        background-color: #5178bc;
+        background: linear-gradient(to bottom, #5178bc 0%, #488ecc 100%);
+      }
+      .background-gradient-blue {
+        background-color: #5178bc;
+        background: linear-gradient(to bottom, #5178bc 0%, #488fcc 91%);
+      }
+      @media only screen and (min-width: 768px) {
+        #mbl {
+          display: none !important;
+        }
+      }
+      @media only screen and (max-width: 767px) {
+        #dsk {
+          display: none !important;
+        }
+      }
+      #nav-banner {
+        border-radius: 25px;
+        padding: 8px;
+        color: white;
+        text-align: center;
+      }
+      .navbar-menu {
+        background-color: #fff!important;
+        border: solid 5px #5079bd;
+        border-radius: 30px;
+      }
+      .navbar-menu a {
+        border: none;
+      }
+      .custom-dropdown {
+        border-radius: 20px!important;
+        margin-top: 20px!important;
+      }
+      #mbl {
+        background-color: #fff!important;
+        border: solid 5px #5079bd!important;
+        border-radius: 25px;
+        margin-top: 10px;
+      }
+      #mbl a {
+        color: black!important;
+      }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <title>
+      {% block title %}
+        Program shop
+      {% endblock %}
+
+    </title>
+
+  </head>
+
+  <body class="container">
+
+    <nav id="dsk" class="col-12 navbar navbar-expand-lg navbar-light mt-2">
+      <div class="col-12">
+
+        <nav style="padding: 2rem;" class="navbar-menu col-12 navbar navbar-expand-lg navbar-light">
+          <a class="navbar-brand ml-5" href="/"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <ul class="navbar-nav mr-auto  ml-auto flex-nowrap">
+            <div class="background-gradient" id="nav-banner">
+
+              <div class="collapse navbar-collapse flex-grow-1 text-right" id="navbarSupportedContent">
+                <li class="nav-item mr-2">
+                  <a class="text-sm-center nav-link" style="color: white; font-weight: 600;" href="/">Shop</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a style="color: white!important; font-weight: 600;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Profile
+                  </a>
+                  {% if user.is_authenticated %}
+                    <div class="dropdown-menu custom-dropdown" aria-labelledby="navbarDropdown">
+                      <a style="color: black!important; font-weight: 600;" class="dropdown-item" href="/profile">My profile</a>
+                      <a style="color: black!important; font-weight: 600;" class="dropdown-item" href="/logout">Logout</a>
+                    </div>
+                  {% else %}
+                    <div class="dropdown-menu custom-dropdown" style="border-radius: 20px;" aria-labelledby="navbarDropdown">
+                      <a style="color: black!important; font-weight: 600;" class="dropdown-item" href="/register">Sign up</a>
+                      <a style="color: black!important; font-weight: 600;" class="dropdown-item" href="/login">Login</a>
+                    </div>
+                  {% endif %}
+                </li>
+
+              </div>
+            </ul>
+
+          </div>
+        </nav>
+
+      </div>
+    </nav>
+
+    <nav id="mbl" style="padding: 2rem;" class="navbar navbar-expand-lg navbar-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand mx-auto" href="/" style="text-align: center;"></a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="nav navbar-nav">
+          <li class="nav-item mr-2">
+            <a class="text-sm-center nav-link" style="font-weight: 600;" href="/">Shop</a>
+          </li>
+
+          {% if user.is_authenticated %}
+            <li class="nav-item mr-2">
+              <a class="text-sm-center nav-link" style="font-weight: 600" href="/profile">Profile</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="text-sm-center nav-link" style="font-weight: 600" href="/logout">Logout</a>
+            </li>
+          {% else %}
+            <li class="nav-item mr-2">
+              <a class="text-sm-center nav-link" style="font-weight: 600" href="/register">Sign up</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="text-sm-center nav-link" style="font-weight: 600" href="/login">Login</a>
+            </li>
+          {% endif %}
+
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12 mt-5">
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="margin-top: 100px!important;">
+  <hr style="margin-top: 100px!important;" class="featurette-divider">
+  <footer class="container">
+    <p class="float-right"></p>
+    <p style="color: #4c82c6">© 2014-2021<br>Program shop, American Best Technologies Company LLC. All rights reserved.<br>
+      <a href="/terms">Terms & Privacy</a>
+    </p>
+  </footer>
+</div>
+
+</body>
+
+</html>

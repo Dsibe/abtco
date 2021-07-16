@@ -14,20 +14,17 @@ SECRET_KEY = os.environ.get(
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'www.abtco.us',
-    'khatynka.abtco.us',
-    'abtco.us',
-    'www.khatynka.abtco.us',
-    'localhost',
-    '127.0.0.1',
-    'abtcoproject.herokuapp.com',
-    '5076cae0dd4e.ngrok.io'
+    'www.abtco.us', 'khatynka.abtco.us', 'shop.abtco.us', 'abtco.us',
+    'khatynka.localhost', 'shop.localhost', 'www.khatynka.abtco.us',
+    'localhost', '127.0.0.1', 'abtcoproject.herokuapp.com'
 ]
 
 INSTALLED_APPS = [
     'django_hosts',
     'main',
+    'sellapp.apps.SellappConfig',
     'khatynka',
+    'shop',
     'users.apps.UsersConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -61,6 +58,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'TEMPLATES'),
             os.path.join(BASE_DIR, 'khatynka/templates'),
+            os.path.join(BASE_DIR, 'shop/templates'),
             os.path.join(BASE_DIR, 'main/templates'),
             os.path.join(BASE_DIR, 'abtco/main/templates'),
             os.path.join(BASE_DIR, 'users/templates'),
@@ -128,9 +126,8 @@ USE_L10N = True
 PAYPAL_RECEIVER_EMAIL = 'abt.company@aol.com'
 PAYPAL_TEST = False
 
-# PAYPAL_RECEIVER_EMAIL = 'abt.company-facilitator@aol.com'
-# PAYPAL_TEST = True
-
+PAYPAL_RECEIVER_EMAIL = 'abt.company-facilitator@aol.com'
+PAYPAL_TEST = True
 
 USE_TZ = True
 
@@ -139,20 +136,24 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'loginn'
 
+
+def debug_env_var(name):
+    try:
+        with open(
+                rf'D:\libraries\Desktop\Dj\env\Scripts\app\abtco_env\{name}.txt'
+        ) as file:
+            return file.read()
+    except:
+        pass
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'abtcous2014@gmail.com'
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_USER', 'ABTco777&&&')
-
-# EMAIL_HOST = 'smtp.aol.com'
-# # EMAIL_USE_TLS = True
-# EMAIL_USE_TLS = True
-# EMAIL_PORT = 587
-# # EMAIL_USE_SSL = True
-# EMAIL_HOST_USER = 'abt.company@aol.com'
-# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_USER', '08092005d')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_USER',
+                                     debug_env_var('EMAIL_HOST_USER'))
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -166,7 +167,7 @@ DEFAULT_HOST = 'www'
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), )
-print(STATICFILES_DIRS)
+
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)

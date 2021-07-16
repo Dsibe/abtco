@@ -1,0 +1,58 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+
+  <div class="row col-12 mx-auto">
+    <div class="col-12 mx-auto text-center mb-5">
+      <h1>Payment</h1>
+      <h3>This is your future license, it's about to become yours.</h3>
+
+      <br>
+      <h3>The payment is processed by PayPal, it's secure and encrypted.</h3>
+      <h3>Program shop doesn't have access to any of your card information.</h3>
+      <br>
+
+      <h3>Press the "Buy Now" button, which is located below, to pay for the license.</h3>
+    </div>
+
+    <div class="col-12 col-md-7 col-lg-5 mx-auto" style="border-radius: 30px; box-shadow: 0 20px 50px -10px black">
+
+      <div class="col-12 mx-auto mt-4">
+        <div class="text-center">
+          <img src="/static/{{ app.logo }}" style="width: 50%">
+        </div>
+      </div>
+
+      <h1 class="text-center mt-2 mb-2">{{ app.name}}</h1>
+
+      <hr>
+
+      <div class="text-center">
+        <h2>Plan "{{ plan.name}}"</h2>
+
+        <h4>• Duration:
+          {{ period }}
+          months</h4>
+        <h4>• Maximum
+          {{ max_machines_amount }}
+          machines</h4>
+
+      </div>
+
+      <hr>
+
+      <h2 class="text-center mb-4">Total: ${{ price}}</h2>
+
+    </div>
+
+    <div class="col-12 mx-auto mt-5">
+
+      <div class="text-center mt-5">
+        <h1 class="mb-3">The "Buy Now" button:</h1>
+        {{ form.render }}
+      </div>
+    </div>
+
+  </div>
+
+{% endblock %}

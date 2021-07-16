@@ -6,4 +6,5 @@ host_patterns = patterns(
     host(r'www.abtco.us', 'main.urls', name='www'),
     host(r'', 'main.urls', name='root'),
     host(r'khatynka', 'khatynka.urls', name='khatynka'),
+    host(r'shop', 'shop.urls', name='shop'),
 )

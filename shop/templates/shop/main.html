@@ -1,0 +1,54 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <style>
+    .app-card {
+      border: 3px solid white;
+      padding: 20px;
+      border-radius: 40px;
+      -webkit-box-shadow: 0 20px 50px -10px #06001F;
+      box-shadow: 0 20px 50px -10px #06001F;
+      margin-top: 90px;
+    }
+  </style>
+
+  <h1 class="text-center mt-3" style="font-size: 4rem">Program shop</h1>
+
+  <div class="row col-12 mx-auto">
+
+    {% for app in apps %}
+      <div class="col-12 row app-card h-100 mx-auto">
+        <div class="row">
+
+          <div class="col-12 col-md-4 my-auto">
+            <a href="/app/{{ app.name_id }}">
+              <img src="/static/{{ app.logo }}" style="width: 100%">
+            </a>
+          </div>
+
+          <div class="container col-12 col-md-8">
+            <div class="row col-12">
+              <h1 class="col-12">{{ app.name }}</h1>
+              <h3 class="col-12">{{ app.short_description }}</h3>
+            </div>
+
+            <div class="row col-auto mt-4">
+              <div class="col-auto">
+                <h4 class="">Starting from ${{ app.from_price }}</h4>
+              </div>
+
+              <div class="col my-auto">
+                <a href="/app/{{ app.name_id }}" class="col-12 col-md-auto float-right btn btn-info my-auto">More info</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+
+  </div>
+
+{% endblock %}

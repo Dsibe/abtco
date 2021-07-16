@@ -13,6 +13,14 @@ from users.models import *
 dates = []
 
 
+def consulting(request):
+    return render(request, r'main/consulting.html')
+
+
+def consulting_ru(request):
+    return render(request, r'main/consulting_ru.html')
+
+
 def psy_finance(request):
     return render(request, r'main/psy_finance.html')
 
@@ -240,7 +248,7 @@ def trading_ru_g(request):
 После оплаты вы получите доступ к полному курсу по расписанию,
 согласно выбранной вами группы.
 
-Стоимость полного курса составляет — $199.99
+Стоимость полного курса составляет — $299.99
 Для записи на групповой курс нажмите на кнопку ниже.
 
 Доступны новые опции:

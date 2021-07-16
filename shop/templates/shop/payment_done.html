@@ -1,0 +1,28 @@
+{% extends 'shop/base.html' %}
+
+{% block content %}
+
+  <style>
+
+    .banner {
+      border-radius: 25px;
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }
+    a {
+      color: white;
+      text-decoration: none !important;
+      border-bottom: solid white 1px;
+    }
+  </style>
+
+  <div class="background-gradient col-12 banner">
+
+    <h1 style="margin-bottom: 25px; font-size: 46px;">You have successfully bought license!</h1>
+    <h2>Your key is available at your
+      <a href="/profile">profile</a>
+      page. Please wait up to 15 min to receive it while PayPal processes the payment.</h2>
+  </div>
+
+{% endblock %}

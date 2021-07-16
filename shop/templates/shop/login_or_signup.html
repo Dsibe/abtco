@@ -1,0 +1,11 @@
+{% extends 'shop/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  <div class="col-6">
+    <a href="/login?next={{ next }}">Login</a>
+    <a href="/register?next={{ next }}">Sign up</a>
+  </div>
+
+{% endblock %}

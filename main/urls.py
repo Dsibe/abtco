@@ -6,8 +6,12 @@ from users.views import *
 from django.contrib.auth import views as auth_views
 from users.models import *
 
+app_name = 'main'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('consulting/', consulting),
+    path('consulting-ru/', consulting_ru),
     path('trial-ua/', trial_ua, name='trial-ua'),
     path('trial-es/', trial_es, name='trial-es'),
     path('trial-fr/', trial_fr, name='trial-fr'),
@@ -63,4 +67,18 @@ urlpatterns = [
          name='logout'),
     path('register/', register, name='register'),
     path('profile/', profile, name='profile'),
+
+    # path('paypal/', include('paypal.standard.ipn.urls')),
+    # path('payment-done/', shop_views.payment_done, name='payment_done'),
+    # path('payment-cancelled/', shop_views.payment_canceled, name='payment_cancelled'),
+    # path(
+    #     'buy-license/<str:app_name_id>/<str:pricing_id>/<int:period>/<int:max_machines_amount>/',
+    #     shop_views.buy_license),
+    # path('login',
+    #      auth_views.LoginView.as_view(template_name='shop/login.html',
+    #                                   extra_context={'next': 'profile'}),
+    #      name='shop-login'),
+    # path(
+    #     'buy-license/<str:app_name_id>/<str:pricing_id>/<int:period>/<int:max_machines_amount>/',
+    #     shop_views.buy_license),
 ]

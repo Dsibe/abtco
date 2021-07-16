@@ -1,0 +1,211 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <script>
+    function countTotal(multiplier) {
+      monthsAmount = document.getElementById('custom-period').value;
+      machinesAmount = document.getElementById('custom-machines-amount').value;
+
+      if (monthsAmount === '' | machinesAmount === '') {
+        return undefined;
+      }
+
+      monthsAmount = parseInt(monthsAmount);
+      machinesAmount = parseInt(machinesAmount);
+
+      discountPercent = 0;
+
+      if (monthsAmount > 3) {
+        discountPercent = 0.15
+      } else if (monthsAmount > 6) {
+        discountPercent = 0.30
+      } else if (monthsAmount > 12) {
+        discountPercent = 0.60
+      }
+
+      monthsTotalSum = (monthsAmount * 3);
+      monthsTotalSum = monthsTotalSum * (1 - discountPercent);
+
+      machinesAmount = machinesAmount * (1 - discountPercent);
+
+      machinesTotalSum = monthsTotalSum * machinesAmount;
+
+      totalSum = machinesTotalSum * multiplier;
+
+      total = document.getElementById('custom-price');
+      total.innerHTML = `$${totalSum.toFixed(2)}`;
+    }
+  </script>
+
+  <script src="{% static 'app_scripts.js' %}"></script>
+
+  <div class="row col-12 mx-auto mb-5">
+
+    <div class="col-12 col-md-6 mx-auto">
+      <img src="/static/{{ app.logo }}" style="width: 100%">
+    </div>
+
+    <div class="col-12 mx-auto">
+      <h1 class="text-center mt-3" style="font-size: 4rem">{{ app.name }}</h1>
+    </div>
+
+    <div class="mt-5 col-12 mx-auto row">
+      <div class="col-12 col-md-6 col-xl mx-auto mt-3">
+        <a onclick="showWindow('description')" class="btn btn-success col-12 background-gradient-blue" style="font-size: 1.3rem; color: white; border-radius: 30px; padding: 20px;">Description</a>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl mx-auto mt-3">
+        <a onclick="showWindow('pricing')" class="btn btn-success col-12 background-gradient-blue" style="font-size: 1.3rem; color: white; border-radius: 30px; padding: 20px;">Pricing</a>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl mx-auto mt-3">
+        <a onclick="showWindow('screenshots')" class="btn btn-success col-12 background-gradient-blue" style="font-size: 1.3rem; color: white; border-radius: 30px; padding: 20px;">Screenshots</a>
+      </div>
+
+      <div class="col-12 col-md-6 col-xl mx-auto mt-3">
+        <a onclick="showWindow('support')" class="btn btn-success col-12 background-gradient-blue" style="font-size: 1.3rem; color: white; border-radius: 30px; padding: 20px;">Support & FAQ</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="visible row col-12 mx-auto" id="description">
+
+    <div class="col-12 mx-auto">
+      <h1 class="text-center mt-3" style="font-size: 4rem">Description</h1>
+
+      {{ app.description|safe }}
+
+    </div>
+  </div>
+
+  <div class="invisible row col-12 mx-auto" id="screenshots">
+
+    <div class="col-12 mx-auto">
+      <h1 class="text-center mt-3 mb-5" style="font-size: 4rem">Screenshots</h1>
+
+      {% for img in app.screenshots_json %}
+        <div class="col-12 mb-5">
+          <h4 class="text-center text-muted mt-2">{{ img.caption }}</h4>
+          <img src="{% static img.src %}" style="width: 100%; border-radius: 30px">
+        </div>
+      {% endfor %}
+
+      {% for vid in app.videos_json %}
+        <div class="col-12 mt-3">
+          {{ vid.code|safe }}
+          <h4 class="text-center mt-2">{{ vid.caption }}</h4>
+        </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+  <div class="invisible row col-12 mx-auto" id="pricing">
+
+    <div class="col-12 mx-auto">
+      <h1 class="text-center mt-3 mb-5" style="font-size: 4rem">Pricing</h1>
+
+      <div class="row mt-5">
+        {% for pricing in app.pricing_json %}
+
+          {% if pricing.is_custom %}
+            <div class="col-12 container col-sm-12 col-md-6 col-lg-4 mx-auto mb-5">
+              <div class="row col-12" style="background-color: lightblue; border-radius: 30px 30px 0 0;">
+                <div class="col-12 mt-2">
+                  <h1 class="text-center">{{ pricing.name }}</h1>
+                  <h1 id="custom-price" class="text-center" style="font-size: 3rem">$0.00</h1>
+                </div>
+              </div>
+
+              <div class="row col-12 mt-3 text-center">
+
+                <div class="col-12">
+                  <p>Maximum machines amount</p>
+                  <input min="1" onkeyup="countTotal({{ pricing.custom_multiplier }});" value="0" placeholder="Maximum machines amount" id="custom-machines-amount" type="number" class="custom-input">
+                </div>
+
+                <div class="col-12 mt-4 mb-4">
+                  <p>Period (months)</p>
+                  <input min="1" onkeyup="countTotal({{ pricing.custom_multiplier }});" value="0" placeholder="Period (months)" id="custom-period" type="number" class="custom-input">
+                </div>
+              </div>
+
+              <div class="row col-12" style="border-radius: 0 0 30px 30px; box-shadow: 0 30px 50px -13px #06001F;">
+                <div class="col-12 mb-3 mt-3">
+                  <button onclick="handleCustomPricingBtn('{{ app.name_id }}', '{{ pricing.pricing_id }}')" class="btn btn-info col-12 mx-auto">Buy it now</button>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+
+        {% endfor %}
+      </div>
+
+      <div class="row">
+        {% for pricing in app.pricing_json %}
+
+          {% if not pricing.is_custom %}
+            <div class="col-12 container col-sm-12 col-md-6 col-lg-4 mx-auto mb-5">
+              <div class="row col-12" style="background-color: lightblue; border-radius: 30px 30px 0 0;">
+                <div class="col-12 mt-2">
+                  <h1 class="text-center">{{ pricing.name }}</h1>
+                  <h1 class="text-center" style="font-size: 3rem">${{ pricing.price }}</h1>
+                </div>
+              </div>
+
+              <div class="row col-12 mt-3">
+                <div class="col-12">
+                  <p>
+                    {{ pricing.description }}<br>
+                    Maximum
+                    {{ pricing.max_machines_amount }}
+                    machines
+                  </p>
+                </div>
+              </div>
+
+              <div class="row col-12" style="border-radius: 0 0 30px 30px; box-shadow: 0 30px 50px -13px #06001F;">
+                <div class="col-12 mb-3 mt-3">
+                  <button onclick="handlePricingBtn('{{ app.name_id }}', '{{ pricing.pricing_id }}', 0, 0)" class="btn btn-info col-12 mx-auto">Buy it now</button>
+                </div>
+              </div>
+            </div>
+          {% endif %}
+
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+
+  <div class="invisible row col-12 mx-auto" id="support">
+
+    <div class="col-12 mx-auto text-center">
+      <h1 class="text-center mt-3" style="font-size: 4rem">Support & FAQ</h1>
+      <h2 class="mb-5 mt-2">If you couldn't find answer to your question below, please contact us</h2>
+
+      {% for faq in app.faq_json %}
+
+        <div class="mt-4">
+          <p>
+            <a class="col-12 col-md-6 btn btn-primary dropdown-toggle faq-button background-gradient-blue btn-lg" data-toggle="collapse" href="#faq-{{ forloop.counter }}" role="button" aria-expanded="false" style="border-radius: 25px">
+              {{ faq.question }}<br>
+            </a>
+          </p>
+          <div class="collapse mb-3" id="faq-{{forloop.counter}}">
+            <div class="card card-body faq-answer" style="border-radius: 25px">
+              {{ faq.answer|safe }}
+            </div>
+          </div>
+        </div>
+
+      {% endfor %}
+
+    </div>
+  </div>
+
+{% endblock %}
